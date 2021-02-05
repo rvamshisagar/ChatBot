@@ -35,8 +35,6 @@ app.post("/dialogflow", express.json(), (req, res) => {
      }
       const val=agent.parameters.issue; 
       var trouble_ticket=randomstring.generate(7);
-      //Generating trouble ticket and storing it in Mongodb
-      //Using random module
       MongoClient.connect(url, function (err, db) {
         if (err)
           throw err;
@@ -64,6 +62,6 @@ intentMap.set("complaint",identify_user);
 intentMap.set("complaint - custom",report_issue);
 agent.handleRequest(intentMap);
 
-});//Closing tag of app.post
+});
 
 app.listen(process.env.PORT || 2001);
